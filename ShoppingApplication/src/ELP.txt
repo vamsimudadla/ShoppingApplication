@@ -1,0 +1,55 @@
+Model
+    Product
+        -availableSizes
+        -currencyFormat
+        -description
+        -id
+        -installments
+        -isFreeShipping
+        -price
+        -sku
+        -style
+        -title
+        -image
+        -quantity
+Store
+    ShoppingStore
+        -Products
+        -@observable selectedSizes = []
+        -@observable orderByPrice
+        -@observable cartItems = []
+        -@action updateSelectedSizes
+        -@action changeOrderByPrice
+        -@computed findSelectedSizeProducts
+        -@computed sortProductsOrderedByPrice
+        -@action addToCartItems
+        -@action deleteCartItem
+        -@computed findNumberOfItemsinCart
+        -@computed findTotalPriceOfCartItems
+
+
+
+ShoppingApp
+    <ProductSizes>
+        -SizeButtons
+    <ProductsList>
+        <Product>
+            -productImage
+            -productTitle
+            -productPrice
+            -productInstallment
+            -addToCartButton
+    <ProductListHeader>
+        -numberOfItemsFound
+        -orderOfProductsDropDown
+    <CartIconWithNumber>
+        -<cartIconWithNumberImg>
+        -<CartItemsList>
+            -<CartItem>
+                -productImage
+                -productTitle
+                -productSize
+                -productDescription
+                -productPrice
+                -productQuantity
+        -<SubTotalWithCheckOut>

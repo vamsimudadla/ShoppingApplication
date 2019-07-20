@@ -1,0 +1,11 @@
+.buttonSizes {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  margin-top: 60px;
+}
+
+.sizesText {
+  font-weight: 700;
+}
