@@ -2,3 +2,27 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.shoppingStoreHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.orderByDropDown {
+  margin-right: 100px;
+}
+
+.dropDown {
+  width: 150px;
+  height: 35px;
+  border-radius: 7px;
+  outline: none;
+  background-color: white;
+}
+
+.HeaderWithProductList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
