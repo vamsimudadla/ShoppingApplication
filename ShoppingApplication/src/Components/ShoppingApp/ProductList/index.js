@@ -1,10 +1,23 @@
 import React, { Component } from "react";
-import products from "../../../constants/Products";
 import Product from "./Product";
+import "./styles.css";
+import { observer } from "mobx-react";
 
+@observer
 class ProductList extends Component {
   render() {
-    return <Product product={products[0]} />;
+    const shoppingStore = this.props.shoppingStore;
+    return (
+      <div className="productsList">
+        {shoppingStore.getSelectedSizeProducts.length === 0 ? (
+          <span>No Products Available</span>
+        ) : (
+          shoppingStore.getSelectedSizeProducts.map(product => (
+            <Product product={product} />
+          ))
+        )}
+      </div>
+    );
   }
 }
 

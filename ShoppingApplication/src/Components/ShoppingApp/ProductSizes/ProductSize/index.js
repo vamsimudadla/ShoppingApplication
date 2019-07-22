@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import "./styles.css";
+import { observer } from "mobx-react";
+@observer
 class ProductSize extends Component {
   productButtons = () => {
     return this.props.sizes.map(size => (
       <button
         type="button"
         value={size}
-        className="buttonStyle"
+        className={
+          this.props.selectedSizes.indexOf(size) === -1
+            ? "buttonStyle"
+            : "activeButtonStyle"
+        }
         onClick={this.updateSelectedSizes}
         key={Math.random()}
       >

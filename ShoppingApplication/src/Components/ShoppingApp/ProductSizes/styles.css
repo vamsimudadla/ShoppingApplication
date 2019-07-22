@@ -1,5 +1,6 @@
 .buttonSizes {
   display: flex;
+  width: 250px;
   flex-direction: column;
   margin-left: 40px;
   margin-top: 60px;

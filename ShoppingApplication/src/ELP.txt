@@ -14,7 +14,7 @@ Model
         -quantity
 Store
     ShoppingStore
-        -Products
+        -products
         -@observable selectedSizes = []
         -@observable orderByPrice
         -@observable cartItems = []
