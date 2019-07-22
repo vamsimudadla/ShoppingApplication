@@ -12,6 +12,6 @@
 .productSizes {
   display: flex;
   margin-top: 20px;
-  width: 13%;
+  width: 60%;
   flex-wrap: wrap;
 }

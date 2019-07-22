@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import ProductSizes from "./Components/ProductSizes";
+import ShoppingApp from "./Components/ShoppingApp";
 
 function App() {
   return (
     <div className="App">
       <div>
-        <ProductSizes />
+        <ShoppingApp />
       </div>
     </div>
   );
