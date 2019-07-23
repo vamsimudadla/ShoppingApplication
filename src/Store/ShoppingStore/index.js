@@ -24,6 +24,17 @@ class ShoppingStore {
     this.orderByPrice = value;
   }
 
+  @computed get getNumberOfItemsInCart() {
+    const filteredProducts = this.products.filter(
+      product => product.quantity > 0
+    );
+    let sum = 0;
+    for (let i = 0; i < filteredProducts.length; i++) {
+      sum = sum + filteredProducts[i].quantity;
+    }
+    return sum;
+  }
+
   @computed get getSelectedSizeProducts() {
     let availableProducts = [];
     if (this.selectedSizes.length === 0) {
@@ -37,6 +48,10 @@ class ShoppingStore {
         availableProducts = availableProducts.concat(selectedSizeProducts[i]);
       return this.sortProductsOrderByPrice(availableProducts);
     }
+  }
+
+  @computed get getCartProducts() {
+    return this.products.filter(product => product.quantity > 0);
   }
 
   sortProductsOrderByPrice(availableProducts) {

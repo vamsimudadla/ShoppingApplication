@@ -1,0 +1,37 @@
+.cartImage {
+  width: 100px;
+  height: 130px;
+  margin-left: 30px;
+}
+
+.cartText {
+  color: #777777;
+  margin-top: 15px;
+}
+
+.cartItemDiv {
+  display: flex;
+  margin: 10px;
+}
+
+.cartTextsDiv {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.sizeAndPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productPrice {
+  margin-right: 20px;
+}
+
+.cartProductTitle {
+  color: white;
+  font-size: 20px;
+}

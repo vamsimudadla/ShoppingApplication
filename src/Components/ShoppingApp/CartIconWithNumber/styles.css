@@ -1,0 +1,28 @@
+.cartItemsCard {
+  position: fixed;
+  right: 0px;
+  width: 600px;
+  height: 100vh;
+  background-color: black;
+}
+
+.cartItemsNotClicked {
+  width: 0px;
+  height: 0px;
+}
+
+.cartIconInCard {
+  width: 600px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartName {
+  position: absolute;
+  color: white;
+  margin-left: 65px;
+  margin-top: 10px;
+  font-size: 25px;
+}
