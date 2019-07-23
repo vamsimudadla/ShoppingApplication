@@ -5,6 +5,10 @@ import { observer } from "mobx-react";
 
 @observer
 class ProductList extends Component {
+  handleChange = e => {
+    this.props.shoppingStore.changeOrderByPrice(e.target.value);
+  };
+
   render() {
     const shoppingStore = this.props.shoppingStore;
     return (
@@ -17,12 +21,16 @@ class ProductList extends Component {
           </span>
           <div className="orderByDropDown">
             <span>Order by </span>
-            <select name="priceOrder" className="dropDown">
+            <select
+              name="priceOrder"
+              className="dropDown"
+              onChange={this.handleChange}
+            >
               <option value="" disabled selected hidden>
                 Select
               </option>
-              <option value="Lowest To Highest">Lowest To Highest</option>
-              <option value="Highest To Lowest">Highest To Lowest</option>
+              <option value="LH">Lowest To Highest</option>
+              <option value="HL">Highest To Lowest</option>
             </select>
           </div>
         </div>

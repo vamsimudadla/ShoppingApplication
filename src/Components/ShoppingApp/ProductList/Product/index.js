@@ -12,15 +12,19 @@ class Product extends Component {
         )}
         <img src={product.image} className="productImage" />
         <span className="productTitle">{product.title}</span>
-        <span>{product.currencyFormat + product.price + "0"}</span>
-        <span className="installmentsTextColor">
-          {"or" +
-            " " +
-            product.installments +
-            " " +
-            "x$" +
-            (product.price / product.installments).toFixed(2)}
-        </span>
+        <span>{product.currencyFormat + product.price}</span>
+        {product.installments !== 0 ? (
+          <span className="installmentsTextColor">
+            {"or" +
+              " " +
+              product.installments +
+              " " +
+              "x$" +
+              (product.price / product.installments).toFixed(2)}
+          </span>
+        ) : (
+          ""
+        )}
         <button type="button" className="addToCartButtonStyle">
           Add to cart
         </button>
