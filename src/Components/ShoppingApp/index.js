@@ -13,7 +13,7 @@ class ShoppingApp extends Component {
       <div className="shoppingApp">
         <ProductSizes shoppingStore={shoppingStore} />
         <ProductList shoppingStore={shoppingStore} />
-        <CartIConWithNumber />
+        <CartIConWithNumber shoppingStore={shoppingStore} />
       </div>
     );
   }

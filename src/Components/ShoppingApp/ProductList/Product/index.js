@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./styles.css";
 class Product extends Component {
+  addItemToCart = e => {
+    this.props.product.addItemToCart();
+  };
+
   render() {
     const product = this.props.product;
     return (
@@ -25,7 +29,11 @@ class Product extends Component {
         ) : (
           ""
         )}
-        <button type="button" className="addToCartButtonStyle">
+        <button
+          type="button"
+          className="addToCartButtonStyle"
+          onClick={this.addItemToCart}
+        >
           Add to cart
         </button>
       </div>

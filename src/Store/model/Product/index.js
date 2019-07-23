@@ -1,3 +1,6 @@
+import { action } from "mobx";
+import { observable } from "mobx";
+
 class Product {
   availableSizes;
   currencyFormat;
@@ -11,7 +14,7 @@ class Product {
   style;
   title;
   image;
-  quantity;
+  @observable quantity;
   constructor(product) {
     this.availableSizes = product.availableSizes;
     this.currencyFormat = product.currencyFormat;
@@ -26,6 +29,11 @@ class Product {
     this.title = product.title;
     this.image = product.image;
     this.quantity = 0;
+  }
+
+  @action.bound
+  addItemToCart() {
+    this.quantity = this.quantity + 1;
   }
 }
 

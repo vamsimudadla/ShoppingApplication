@@ -2,7 +2,7 @@ import Product from "../model/Product";
 import { observable, computed, get } from "mobx";
 import { action } from "mobx";
 class ShoppingStore {
-  products = [];
+  @observable products = [];
   @observable selectedSizes = [];
   @observable orderByPrice = "";
 
