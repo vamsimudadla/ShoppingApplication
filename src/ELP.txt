@@ -22,7 +22,7 @@ Store
         -@action changeOrderByPrice
         -@computed findSelectedSizeProducts
         -@computed sortProductsOrderedByPrice
-        -@action addToCartItems
+        -@action addItemToCart
         -@action deleteCartItem
         -@computed findNumberOfItemsinCart
         -@computed findTotalPriceOfCartItems
