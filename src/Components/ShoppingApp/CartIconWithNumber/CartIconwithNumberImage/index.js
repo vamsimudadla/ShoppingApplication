@@ -10,19 +10,17 @@ class CartIconWithNumberImage extends Component {
   };
 
   render() {
+    const { shoppingStore, isClicked } = this.props;
+    const { numberOfItemsInCart } = shoppingStore;
     return (
       <div
-        className={this.props.isClicked ? "moveCartIcon" : "CartIconWithNumber"}
+        className={isClicked ? "moveCartIcon" : "CartIconWithNumber"}
         onClick={this.openCartItemsCard}
       >
-        {this.props.isClicked ? (
+        {isClicked ? (
           <span className="crossIcon">X</span>
         ) : (
-          <CartIcon
-            getNumberOfItemsInCart={
-              this.props.shoppingStore.getNumberOfItemsInCart
-            }
-          />
+          <CartIcon numberOfItemsInCart={numberOfItemsInCart} />
         )}
       </div>
     );

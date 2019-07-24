@@ -6,19 +6,17 @@ import { observer } from "mobx-react";
 @observer
 class ProductList extends Component {
   handleChange = e => {
-    this.props.shoppingStore.changeOrderByPrice(e.target.value);
+    const { shoppingStore } = this.props;
+    shoppingStore.changeOrderByPrice(e.target.value);
   };
 
   render() {
-    const shoppingStore = this.props.shoppingStore;
+    const { shoppingStore } = this.props;
+    const { selectedSizeProducts } = shoppingStore;
     return (
       <div className="HeaderWithProductList">
         <div className="shoppingStoreHeader">
-          <span>
-            {shoppingStore.getSelectedSizeProducts.length +
-              " " +
-              "Product(s) found"}
-          </span>
+          <span>{selectedSizeProducts.length + " " + "Product(s) found"}</span>
           <div className="orderByDropDown">
             <span>Order by </span>
             <select
@@ -35,12 +33,10 @@ class ProductList extends Component {
           </div>
         </div>
         <div className="productsList">
-          {shoppingStore.getSelectedSizeProducts.length === 0 ? (
+          {selectedSizeProducts.length === 0 ? (
             <span>No Products Available</span>
           ) : (
-            shoppingStore.getSelectedSizeProducts.map(product => (
-              <Product product={product} />
-            ))
+            selectedSizeProducts.map(product => <Product product={product} />)
           )}
         </div>
       </div>

@@ -13,22 +13,29 @@ class CartItem extends Component {
   };
 
   render() {
-    const product = this.props.product;
+    const { product } = this.props;
+    const {
+      image,
+      title,
+      deleteCartItem,
+      availableSizes,
+      style,
+      price,
+      quantity
+    } = product;
     return (
       <div className="cartItemDiv">
-        <img src={product.image} className="cartImage" />
+        <img src={image} className="cartImage" />
         <div className="cartTextsDiv">
           <div className="titleAndCrossIcon">
             {this.iSMouseHovered ? (
-              <strike className="cartText cartProductTitle">
-                {product.title}
-              </strike>
+              <strike className="cartText cartProductTitle">{title}</strike>
             ) : (
-              <span className="cartText cartProductTitle">{product.title}</span>
+              <span className="cartText cartProductTitle">{title}</span>
             )}
             <span
               className="cartCrossIcon"
-              onClick={this.props.product.deleteCartItem}
+              onClick={deleteCartItem}
               onMouseOver={this.handleChange}
               onMouseLeave={this.handleChange}
             >
@@ -40,29 +47,23 @@ class CartItem extends Component {
               <>
                 {" "}
                 <strike className="cartText">
-                  {product.availableSizes[0] + " | " + product.style}
+                  {availableSizes[0] + " | " + style}
                 </strike>
-                <strike className="cartText productPrice">
-                  {"$" + product.price}
-                </strike>{" "}
+                <strike className="cartText productPrice">{"$" + price}</strike>{" "}
               </>
             ) : (
               <>
                 <span className="cartText">
-                  {product.availableSizes[0] + " | " + product.style}
+                  {availableSizes[0] + " | " + style}
                 </span>
-                <span className="cartText productPrice">
-                  {"$" + product.price}
-                </span>
+                <span className="cartText productPrice">{"$" + price}</span>
               </>
             )}
           </div>
           {this.iSMouseHovered ? (
-            <strike className="cartText">
-              {"Quantity: " + product.quantity}
-            </strike>
+            <strike className="cartText">{"Quantity: " + quantity}</strike>
           ) : (
-            <span className="cartText">{"Quantity: " + product.quantity}</span>
+            <span className="cartText">{"Quantity: " + quantity}</span>
           )}
         </div>
       </div>

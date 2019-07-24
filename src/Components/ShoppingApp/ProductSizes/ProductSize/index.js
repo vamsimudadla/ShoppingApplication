@@ -4,12 +4,14 @@ import { observer } from "mobx-react";
 @observer
 class ProductSize extends Component {
   productButtons = () => {
-    return this.props.sizes.map(size => (
+    const { sizes, selectedSizes } = this.props;
+
+    return sizes.map(size => (
       <button
         type="button"
         value={size}
         className={
-          this.props.selectedSizes.indexOf(size) === -1
+          selectedSizes.indexOf(size) === -1
             ? "buttonStyle"
             : "activeButtonStyle"
         }
@@ -22,7 +24,8 @@ class ProductSize extends Component {
   };
 
   updateSelectedSizes = event => {
-    this.props.updateSelectedSizes(event.target.value);
+    const { updateSelectedSizes } = this.props;
+    updateSelectedSizes(event.target.value);
   };
 
   render() {

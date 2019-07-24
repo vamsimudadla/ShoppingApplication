@@ -4,14 +4,15 @@ import "./styles.css";
 @observer
 class CartIcon extends Component {
   render() {
+    const { isClicked, numberOfItemsInCart } = this.props;
     return (
       <>
         <img
           src="assets/cart-icon.png"
-          className={this.props.isClicked ? "cartIconImage" : "cartIcon"}
+          className={isClicked ? "cartIconImage" : "cartIcon"}
         />
-        <div className={this.props.isClicked ? "numberInCart" : "number"}>
-          {this.props.getNumberOfItemsInCart}
+        <div className={isClicked ? "numberInCart" : "number"}>
+          {numberOfItemsInCart}
         </div>
       </>
     );

@@ -24,7 +24,7 @@ class ShoppingStore {
     this.orderByPrice = value;
   }
 
-  @computed get getNumberOfItemsInCart() {
+  @computed get numberOfItemsInCart() {
     const filteredProducts = this.products.filter(
       product => product.quantity > 0
     );
@@ -35,7 +35,7 @@ class ShoppingStore {
     return sum;
   }
 
-  @computed get getSelectedSizeProducts() {
+  @computed get selectedSizeProducts() {
     let availableProducts = [];
     if (this.selectedSizes.length === 0) {
       availableProducts = availableProducts.concat(this.products);
@@ -50,7 +50,7 @@ class ShoppingStore {
     }
   }
 
-  @computed get getCartProducts() {
+  @computed get cartProducts() {
     return this.products.filter(product => product.quantity > 0);
   }
 
@@ -75,7 +75,7 @@ class ShoppingStore {
 
   @computed get subTotal() {
     let sum = 0;
-    const cartProducts = this.getCartProducts;
+    const cartProducts = this.cartProducts;
     cartProducts.forEach(product => {
       sum = sum + product.price * product.quantity;
     });
@@ -84,7 +84,7 @@ class ShoppingStore {
 
   @computed get subTotalInstallments() {
     let installments = 0;
-    const cartProducts = this.getCartProducts;
+    const cartProducts = this.cartProducts;
     cartProducts.forEach(product => {
       installments = installments + product.installments;
     });

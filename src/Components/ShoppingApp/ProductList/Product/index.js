@@ -2,29 +2,38 @@ import React, { Component } from "react";
 import "./styles.css";
 class Product extends Component {
   addItemToCart = e => {
-    this.props.product.addItemToCart();
+    const { product } = this.props;
+    product.addItemToCart();
   };
 
   render() {
-    const product = this.props.product;
+    const { product } = this.props;
+    const {
+      isFreeShipping,
+      image,
+      title,
+      currencyFormat,
+      price,
+      installments
+    } = product;
     return (
       <div className="product">
-        {product.isFreeShipping ? (
+        {isFreeShipping ? (
           <span className="freeShippingText">Free Shipping</span>
         ) : (
           ""
         )}
-        <img src={product.image} className="productImage" />
-        <span className="productTitle">{product.title}</span>
-        <span>{product.currencyFormat + product.price}</span>
-        {product.installments !== 0 ? (
+        <img src={image} className="productImage" />
+        <span className="productTitle">{title}</span>
+        <span>{currencyFormat + price}</span>
+        {installments !== 0 ? (
           <span className="installmentsTextColor">
             {"or" +
               " " +
-              product.installments +
+              installments +
               " " +
               "x$" +
-              (product.price / product.installments).toFixed(2)}
+              (price / installments).toFixed(2)}
           </span>
         ) : (
           ""

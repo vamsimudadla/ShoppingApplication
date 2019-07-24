@@ -15,14 +15,13 @@ class CartIConWithNumber extends Component {
   };
 
   render() {
-    const cartProducts = this.props.shoppingStore.getCartProducts;
-    console.log(cartProducts);
+    const { shoppingStore } = this.props;
+    const cartProducts = shoppingStore.cartProducts;
     return (
       <div>
         <CartIconWithNumberImage
-          shoppingStore={this.props.shoppingStore}
+          shoppingStore={shoppingStore}
           openCartItemsCard={this.openCartItemsCard}
-          closeCartItemsCard={this.closeCartItemsCard}
           isClicked={this.isClicked}
         />
         <div
@@ -30,16 +29,14 @@ class CartIConWithNumber extends Component {
         >
           <div className="cartIconInCard">
             <CartIcon
-              getNumberOfItemsInCart={
-                this.props.shoppingStore.getNumberOfItemsInCart
-              }
+              numberOfItemsInCart={shoppingStore.numberOfItemsInCart}
               isClicked={this.isClicked}
             />
             <span className="cartName">Cart</span>
           </div>
           <CartItemsList cartProducts={cartProducts} />
           {cartProducts.length > 0 ? (
-            <SubTotalWithCheckOut shoppingStore={this.props.shoppingStore} />
+            <SubTotalWithCheckOut shoppingStore={shoppingStore} />
           ) : (
             ""
           )}

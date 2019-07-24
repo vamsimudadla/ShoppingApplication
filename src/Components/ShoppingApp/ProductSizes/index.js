@@ -6,17 +6,20 @@ import { observer } from "mobx-react";
 @observer
 class ProductSizes extends Component {
   updateSelectedSizes = size => {
-    this.props.shoppingStore.updateSelectedSizes(size);
+    const { shoppingStore } = this.props;
+    shoppingStore.updateSelectedSizes(size);
   };
+
   render() {
     const sizes = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
+    const { shoppingStore } = this.props;
     return (
       <div className="buttonSizes">
         <span className="sizesText">Sizes:</span>
         <ProductSize
           sizes={sizes}
           updateSelectedSizes={this.updateSelectedSizes}
-          selectedSizes={this.props.shoppingStore.selectedSizes}
+          selectedSizes={shoppingStore.selectedSizes}
         />
       </div>
     );

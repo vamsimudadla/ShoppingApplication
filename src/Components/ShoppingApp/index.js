@@ -8,7 +8,7 @@ import CartIConWithNumber from "./CartIconWithNumber";
 @observer
 class ShoppingApp extends Component {
   render() {
-    const shoppingStore = this.props.shoppingStore;
+    const { shoppingStore } = this.props;
     return (
       <div className="shoppingApp">
         <ProductSizes shoppingStore={shoppingStore} />
