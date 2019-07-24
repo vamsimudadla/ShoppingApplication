@@ -28,3 +28,7 @@
 .crossIcon:hover {
   cursor: pointer;
 }
+
+.CartIconWithNumber:hover {
+  cursor: pointer;
+}

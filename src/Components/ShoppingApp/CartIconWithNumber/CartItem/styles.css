@@ -1,7 +1,6 @@
 .cartImage {
   width: 100px;
   height: 130px;
-  margin-left: 30px;
 }
 
 .cartText {
@@ -11,7 +10,7 @@
 
 .cartItemDiv {
   display: flex;
-  margin: 10px;
+  margin: 20px;
 }
 
 .cartTextsDiv {
@@ -34,4 +33,20 @@
 .cartProductTitle {
   color: white;
   font-size: 20px;
+}
+
+.cartCrossIcon {
+  color: white;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+
+.cartCrossIcon:hover {
+  cursor: pointer;
+}
+
+.titleAndCrossIcon {
+  display: flex;
+  justify-content: space-between;
 }

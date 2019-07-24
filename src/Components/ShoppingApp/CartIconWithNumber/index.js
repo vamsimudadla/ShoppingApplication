@@ -36,7 +36,7 @@ class CartIConWithNumber extends Component {
             />
             <span className="cartName">Cart</span>
           </div>
-          <div>
+          <div className={cartProducts.length > 3 ? "cartItemsBlock" : ""}>
             {cartProducts.map(cartProduct => (
               <CartItem product={cartProduct} />
             ))}

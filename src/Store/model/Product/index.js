@@ -35,6 +35,11 @@ class Product {
   addItemToCart() {
     this.quantity = this.quantity + 1;
   }
+
+  @action.bound
+  deleteCartItem() {
+    this.quantity = 0;
+  }
 }
 
 export default Product;

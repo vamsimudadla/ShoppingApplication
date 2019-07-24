@@ -26,3 +26,8 @@
   margin-top: 10px;
   font-size: 25px;
 }
+
+.cartItemsBlock {
+  height: 450px;
+  overflow-y: scroll;
+}
