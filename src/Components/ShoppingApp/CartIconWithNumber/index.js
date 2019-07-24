@@ -5,6 +5,7 @@ import { observable } from "mobx";
 import "./styles.css";
 import CartIcon from "./CartIconwithNumberImage/CartIcon";
 import CartItem from "./CartItem";
+import SubTotalWithCheckOut from "./SubTotalWithCheckOut";
 @observer
 class CartIConWithNumber extends Component {
   @observable isClicked = false;
@@ -36,11 +37,22 @@ class CartIConWithNumber extends Component {
             />
             <span className="cartName">Cart</span>
           </div>
-          <div className={cartProducts.length > 3 ? "cartItemsBlock" : ""}>
+          <div
+            className={
+              cartProducts.length > 3
+                ? "cartItemsBlock"
+                : "cartItemsWithOutOverFlow"
+            }
+          >
             {cartProducts.map(cartProduct => (
               <CartItem product={cartProduct} />
             ))}
           </div>
+          {cartProducts.length > 0 ? (
+            <SubTotalWithCheckOut shoppingStore={this.props.shoppingStore} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );

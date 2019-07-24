@@ -1,0 +1,32 @@
+.subTotal {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.subTotalWithCheckOut {
+  height: 330px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.subTotalInstallments {
+  color: #777777;
+  margin-left: 430px;
+}
+
+.checkOutButtonStyle {
+  width: 450px;
+  height: 50px;
+  border: none;
+  outline: none;
+  /* background-color: black; */
+  /* color: white; */
+  margin-left: 63px;
+  margin-top: 50px;
+  font-size: 20px;
+}

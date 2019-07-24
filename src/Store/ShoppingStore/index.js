@@ -72,6 +72,24 @@ class ShoppingStore {
     if (index === -1) return false;
     return true;
   }
+
+  @computed get subTotal() {
+    let sum = 0;
+    const cartProducts = this.getCartProducts;
+    cartProducts.forEach(product => {
+      sum = sum + product.price * product.quantity;
+    });
+    return sum;
+  }
+
+  @computed get subTotalInstallments() {
+    let installments = 0;
+    const cartProducts = this.getCartProducts;
+    cartProducts.forEach(product => {
+      installments = installments + product.installments;
+    });
+    return installments;
+  }
 }
 
 export default ShoppingStore;

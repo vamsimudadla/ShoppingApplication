@@ -7,8 +7,7 @@
 }
 
 .cartItemsNotClicked {
-  width: 0px;
-  height: 0px;
+  display: none;
 }
 
 .cartIconInCard {
@@ -30,4 +29,8 @@
 .cartItemsBlock {
   height: 450px;
   overflow-y: scroll;
+}
+
+.cartItemsWithOutOverFlow {
+  height: 450px;
 }
