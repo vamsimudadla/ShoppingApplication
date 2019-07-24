@@ -9,7 +9,7 @@ class SubTotalWithCheckOut extends Component {
       <div className="subTotalWithCheckOut">
         <div className="subTotal">
           <span>SUBTOTAL</span>
-          <span> {"$ " + subTotal}</span>
+          <span className="total"> {"$ " + subTotal}</span>
         </div>
         <span className="subTotalInstallments">
           {subTotalInstallments

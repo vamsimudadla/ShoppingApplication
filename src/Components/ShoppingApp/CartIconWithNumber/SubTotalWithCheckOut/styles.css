@@ -4,14 +4,17 @@
   justify-content: space-between;
   margin-left: 30px;
   margin-right: 30px;
+  font-size: 20px;
+  color: #777777;
 }
 
 .subTotalWithCheckOut {
-  height: 330px;
-  background-color: grey;
+  height: 350px;
+  background-color: #0d0d0d;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  box-shadow: 5px;
 }
 
 .subTotalInstallments {
@@ -24,9 +27,14 @@
   height: 50px;
   border: none;
   outline: none;
-  /* background-color: black; */
-  /* color: white; */
+  background-color: black;
+  color: whitesmoke;
   margin-left: 63px;
   margin-top: 50px;
   font-size: 20px;
+}
+
+.total {
+  font-size: 25px;
+  color: yellow;
 }

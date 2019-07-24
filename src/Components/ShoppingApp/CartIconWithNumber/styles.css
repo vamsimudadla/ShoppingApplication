@@ -3,7 +3,7 @@
   right: 0px;
   width: 600px;
   height: 100vh;
-  background-color: black;
+  background-color: #1a1a1a;
 }
 
 .cartItemsNotClicked {
@@ -33,4 +33,11 @@
 
 .cartItemsWithOutOverFlow {
   height: 450px;
+}
+
+.cartEmptyMsg {
+  color: yellowgreen;
+  font-size: 25px;
+  margin-left: 150px;
+  margin-top: 150px;
 }
