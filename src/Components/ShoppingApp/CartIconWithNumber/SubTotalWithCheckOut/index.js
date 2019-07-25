@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./styles.css";
 class SubTotalWithCheckOut extends Component {
   render() {
-    const shoppingStore = this.props.shoppingStore;
-    const subTotalInstallments = shoppingStore.subTotalInstallments;
-    const subTotal = shoppingStore.subTotal;
+    const { shoppingStore } = this.props;
+    const { subTotal, subTotalInstallments } = shoppingStore;
     return (
       <div className="subTotalWithCheckOut">
         <div className="subTotal">

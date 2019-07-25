@@ -16,7 +16,7 @@ class CartIConWithNumber extends Component {
 
   render() {
     const { shoppingStore } = this.props;
-    const cartProducts = shoppingStore.cartProducts;
+    const { cartProducts } = shoppingStore;
     return (
       <div>
         <CartIconWithNumberImage
