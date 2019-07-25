@@ -5,11 +5,11 @@ class ShoppingStore {
   @observable products = [];
   @observable selectedSizes = [];
   @observable orderByPrice = "";
+  @observable fetchStatus = 0;
 
-  constructor(productsConstant) {
-    this.products = productsConstant.map(
-      product => (product = new Product(product))
-    );
+  @action.bound
+  addFetchedProducts(products) {
+    this.products = products.map(product => (product = new Product(product)));
   }
 
   @action.bound
@@ -89,6 +89,21 @@ class ShoppingStore {
       installments = installments + product.installments;
     });
     return installments;
+  }
+
+  @action.bound
+  fetchData() {
+    fetch("https://demo8129378.mockable.io/products/all/v1")
+      .then(products => {
+        if (!products.ok) {
+          throw new Error(products.status);
+        } else return products.json();
+      })
+      .then(products => {
+        this.fetchStatus = 2;
+        this.addFetchedProducts(products.products);
+      })
+      .catch(err => (this.fetchStatus = 1));
   }
 }
 
