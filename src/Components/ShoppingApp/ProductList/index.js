@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Product from "./Product";
-import "./styles.css";
+import {
+  Wrapper,
+  ProductsListHeader,
+  DropDownBlock,
+  DropDown,
+  ProductsList
+} from "./styledComponent";
 import { observer } from "mobx-react";
 
 @observer
@@ -14,32 +20,28 @@ class ProductList extends Component {
     const { shoppingStore } = this.props;
     const { selectedSizeProducts } = shoppingStore;
     return (
-      <div className="HeaderWithProductList">
-        <div className="shoppingStoreHeader">
+      <Wrapper>
+        <ProductsListHeader>
           <span>{selectedSizeProducts.length + " " + "Product(s) found"}</span>
-          <div className="orderByDropDown">
+          <DropDownBlock>
             <span>Order by </span>
-            <select
-              name="priceOrder"
-              className="dropDown"
-              onChange={this.handleChange}
-            >
+            <DropDown name="priceOrder" onChange={this.handleChange}>
               <option value="" disabled selected hidden>
                 Select
               </option>
               <option value="LH">Lowest To Highest</option>
               <option value="HL">Highest To Lowest</option>
-            </select>
-          </div>
-        </div>
-        <div className="productsList">
+            </DropDown>
+          </DropDownBlock>
+        </ProductsListHeader>
+        <ProductsList>
           {selectedSizeProducts.length === 0 ? (
             <span>No Products Available</span>
           ) : (
             selectedSizeProducts.map(product => <Product product={product} />)
           )}
-        </div>
-      </div>
+        </ProductsList>
+      </Wrapper>
     );
   }
 }

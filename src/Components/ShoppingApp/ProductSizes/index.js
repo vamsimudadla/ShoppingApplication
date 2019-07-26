@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ProductSize from "./ProductSize";
-import "./styles.css";
+import { Container, SizeText } from "./styledComponent";
 import { observer } from "mobx-react";
 
 @observer
@@ -14,14 +14,14 @@ class ProductSizes extends Component {
     const sizes = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
     const { shoppingStore } = this.props;
     return (
-      <div className="buttonSizes">
-        <span className="sizesText">Sizes:</span>
+      <Container>
+        <SizeText>Sizes:</SizeText>
         <ProductSize
           sizes={sizes}
           updateSelectedSizes={this.updateSelectedSizes}
           selectedSizes={shoppingStore.selectedSizes}
         />
-      </div>
+      </Container>
     );
   }
 }

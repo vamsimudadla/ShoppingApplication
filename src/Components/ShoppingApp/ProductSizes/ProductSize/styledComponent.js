@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -9,6 +9,9 @@ const Button = styled.button`
   text-align: center;
   margin: 3px;
   margin-top: 15px;
+  :hover {
+    cursor: pointer;
+  }
 
   ${props =>
     props.isActive &&
@@ -18,11 +21,9 @@ const Button = styled.button`
     `}
 `;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   margin-top: 20px;
   width: 250px;
   flex-wrap: wrap;
 `;
-
-export { Button, Wrapper };

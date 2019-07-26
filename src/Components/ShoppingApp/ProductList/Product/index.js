@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import "./styles.css";
+import {
+  Container,
+  Button,
+  ProductImage,
+  ProductTitle,
+  ProductInstallments,
+  FreeShippingText
+} from "./styledComponent";
 class Product extends Component {
   addItemToCart = e => {
     const { product } = this.props;
@@ -17,35 +24,29 @@ class Product extends Component {
       installments
     } = product;
     return (
-      <div className="product">
+      <Container>
         {isFreeShipping ? (
-          <span className="freeShippingText">Free Shipping</span>
+          <FreeShippingText>Free Shipping</FreeShippingText>
         ) : (
           ""
         )}
-        <img src={image} className="productImage" />
-        <span className="productTitle">{title}</span>
+        <ProductImage src={image} />
+        <ProductTitle>{title}</ProductTitle>
         <span>{currencyFormat + price}</span>
         {installments !== 0 ? (
-          <span className="installmentsTextColor">
+          <ProductInstallments>
             {"or" +
               " " +
               installments +
               " " +
               "x$" +
               (price / installments).toFixed(2)}
-          </span>
+          </ProductInstallments>
         ) : (
           ""
         )}
-        <button
-          type="button"
-          className="addToCartButtonStyle"
-          onClick={this.addItemToCart}
-        >
-          Add to cart
-        </button>
-      </div>
+        <Button onClick={this.addItemToCart}>Add to cart</Button>
+      </Container>
     );
   }
 }
