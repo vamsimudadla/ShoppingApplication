@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./styles.css";
+import { ErrorMessage } from "./styledComponent";
 class ErrorMsg extends Component {
   render() {
     return (
-      <div className="errorMsg">
+      <ErrorMessage>
         <img src="assets/error-msg.png" />
-      </div>
+      </ErrorMessage>
     );
   }
 }

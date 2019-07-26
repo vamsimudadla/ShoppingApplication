@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./styles.css";
+import { LoadingMessage, Loader, LoadingText } from "./styledComponent";
 class LoadingMsg extends Component {
   render() {
     return (
-      <div className="loadingMsg">
-        <div className="loader" />
-        <div className="loadText">Loading...</div>
-      </div>
+      <LoadingMessage>
+        <Loader />
+        <LoadingText>Loading...</LoadingText>
+      </LoadingMessage>
     );
   }
 }
