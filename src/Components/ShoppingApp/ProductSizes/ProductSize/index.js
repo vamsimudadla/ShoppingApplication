@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css";
+import { Button, Wrapper } from "./styledComponent";
 import { observer } from "mobx-react";
 @observer
 class ProductSize extends Component {
@@ -7,19 +7,14 @@ class ProductSize extends Component {
     const { sizes, selectedSizes } = this.props;
 
     return sizes.map(size => (
-      <button
-        type="button"
+      <Button
         value={size}
-        className={
-          selectedSizes.indexOf(size) === -1
-            ? "buttonStyle"
-            : "activeButtonStyle"
-        }
         onClick={this.updateSelectedSizes}
         key={Math.random()}
+        isActive={selectedSizes.indexOf(size) !== -1 ? true : false}
       >
         {size}
-      </button>
+      </Button>
     ));
   };
 
@@ -29,7 +24,7 @@ class ProductSize extends Component {
   };
 
   render() {
-    return <div className="productSizes">{this.productButtons()}</div>;
+    return <Wrapper>{this.productButtons()}</Wrapper>;
   }
 }
 
