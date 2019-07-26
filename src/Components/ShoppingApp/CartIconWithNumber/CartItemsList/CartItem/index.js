@@ -1,5 +1,16 @@
 import React, { Component } from "react";
-import "./styles.css";
+import {
+  Container,
+  CartImage,
+  CartItemContainer,
+  CartItemTitleWithCrossIcon,
+  ProductTitle,
+  CartCrossIcon,
+  SizePriceContainer,
+  ProductStyle,
+  ProductPrice,
+  ProductQuantity
+} from "./styledComponent";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 
@@ -24,49 +35,34 @@ class CartItem extends Component {
       quantity
     } = product;
     return (
-      <div className="cartItemDiv">
-        <img src={image} className="cartImage" />
-        <div className="cartTextsDiv">
-          <div className="titleAndCrossIcon">
-            {this.iSMouseHovered ? (
-              <strike className="cartText cartProductTitle">{title}</strike>
-            ) : (
-              <span className="cartText cartProductTitle">{title}</span>
-            )}
-            <span
-              className="cartCrossIcon"
+      <Container>
+        <CartImage src={image} />
+        <CartItemContainer>
+          <CartItemTitleWithCrossIcon>
+            <ProductTitle iSMouseHovered={this.iSMouseHovered}>
+              {title}
+            </ProductTitle>
+            <CartCrossIcon
               onClick={deleteCartItem}
               onMouseOver={this.handleChange}
               onMouseLeave={this.handleChange}
             >
               X
-            </span>
-          </div>
-          <div className="sizeAndPrice">
-            {this.iSMouseHovered ? (
-              <>
-                {" "}
-                <strike className="cartText">
-                  {availableSizes[0] + " | " + style}
-                </strike>
-                <strike className="cartText productPrice">{"$" + price}</strike>{" "}
-              </>
-            ) : (
-              <>
-                <span className="cartText">
-                  {availableSizes[0] + " | " + style}
-                </span>
-                <span className="cartText productPrice">{"$" + price}</span>
-              </>
-            )}
-          </div>
-          {this.iSMouseHovered ? (
-            <strike className="cartText">{"Quantity: " + quantity}</strike>
-          ) : (
-            <span className="cartText">{"Quantity: " + quantity}</span>
-          )}
-        </div>
-      </div>
+            </CartCrossIcon>
+          </CartItemTitleWithCrossIcon>
+          <SizePriceContainer>
+            <ProductStyle iSMouseHovered={this.iSMouseHovered}>
+              {availableSizes[0] + " | " + style}
+            </ProductStyle>
+            <ProductPrice iSMouseHovered={this.iSMouseHovered}>
+              {"$" + price}
+            </ProductPrice>
+          </SizePriceContainer>
+          <ProductQuantity iSMouseHovered={this.iSMouseHovered}>
+            {"Quantity: " + quantity}
+          </ProductQuantity>
+        </CartItemContainer>
+      </Container>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css";
+import { Container, CrossIcon } from "./styledComponent";
 import { observer } from "mobx-react";
 import CartIcon from "./CartIcon";
 
@@ -13,16 +13,13 @@ class CartIconWithNumberImage extends Component {
     const { shoppingStore, isClicked } = this.props;
     const { numberOfItemsInCart } = shoppingStore;
     return (
-      <div
-        className={isClicked ? "moveCartIcon" : "CartIconWithNumber"}
-        onClick={this.openCartItemsCard}
-      >
+      <Container isClicked={isClicked} onClick={this.openCartItemsCard}>
         {isClicked ? (
-          <span className="crossIcon">X</span>
+          <CrossIcon>X</CrossIcon>
         ) : (
           <CartIcon numberOfItemsInCart={numberOfItemsInCart} />
         )}
-      </div>
+      </Container>
     );
   }
 }

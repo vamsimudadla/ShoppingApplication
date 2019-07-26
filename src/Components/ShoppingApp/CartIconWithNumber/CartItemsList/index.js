@@ -1,22 +1,17 @@
 import React, { Component } from "react";
+import { CartItemsContainer, CartEmptyMsg } from "./styledComponent";
 import CartItem from "./CartItem";
 class CartItemsList extends Component {
   render() {
     const { cartProducts } = this.props;
     return (
-      <div
-        className={
-          cartProducts.length > 3
-            ? "cartItemsBlock"
-            : "cartItemsWithOutOverFlow"
-        }
-      >
+      <CartItemsContainer length={cartProducts.length}>
         {cartProducts.length === 0 ? (
-          <span className="cartEmptyMsg">add some items to Cart</span>
+          <CartEmptyMsg>add some items to Cart</CartEmptyMsg>
         ) : (
           cartProducts.map(cartProduct => <CartItem product={cartProduct} />)
         )}
-      </div>
+      </CartItemsContainer>
     );
   }
 }

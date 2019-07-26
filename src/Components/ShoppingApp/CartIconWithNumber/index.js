@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CartIconWithNumberImage from "./CartIconwithNumberImage";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
-import "./styles.css";
+import { CartItemsCard, CartImage, CartName } from "./styledComponent";
 import CartIcon from "./CartIconwithNumberImage/CartIcon";
 import SubTotalWithCheckOut from "./SubTotalWithCheckOut";
 import CartItemsList from "./CartItemsList";
@@ -24,23 +24,21 @@ class CartIConWithNumber extends Component {
           openCartItemsCard={this.openCartItemsCard}
           isClicked={this.isClicked}
         />
-        <div
-          className={this.isClicked ? "cartItemsCard" : "cartItemsNotClicked"}
-        >
-          <div className="cartIconInCard">
+        <CartItemsCard isClicked={this.isClicked}>
+          <CartImage>
             <CartIcon
               numberOfItemsInCart={shoppingStore.numberOfItemsInCart}
               isClicked={this.isClicked}
             />
-            <span className="cartName">Cart</span>
-          </div>
+            <CartName>Cart</CartName>
+          </CartImage>
           <CartItemsList cartProducts={cartProducts} />
           {cartProducts.length > 0 ? (
             <SubTotalWithCheckOut shoppingStore={shoppingStore} />
           ) : (
             ""
           )}
-        </div>
+        </CartItemsCard>
       </div>
     );
   }
