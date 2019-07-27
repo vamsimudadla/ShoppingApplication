@@ -1,12 +1,16 @@
 import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import FetchedData from "./Components/FetchData";
-import ShoppingStore from "./Store/ShoppingStore";
-const shoppingStore = new ShoppingStore();
-
+import Login from "./Components/LoginPage";
+import SignUp from "./Components/SignUpPage";
 function App() {
   return (
     <div>
-      <FetchedData shoppingStore={shoppingStore} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route exact path="/" component={FetchedData} />
+      </Switch>
     </div>
   );
 }
