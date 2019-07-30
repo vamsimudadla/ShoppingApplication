@@ -5,7 +5,12 @@ export class InputTextBox extends Component {
     const { type, placeHolder } = this.props;
     return (
       <div>
-        <Input type={type} placeholder={placeHolder} />
+        <Input
+          type={type}
+          placeholder={placeHolder}
+          onChange={this.props.handleChange}
+          required
+        />
       </div>
     );
   }

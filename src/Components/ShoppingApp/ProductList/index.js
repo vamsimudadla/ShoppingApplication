@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import { withRouter } from "react-router-dom";
 import {
   Wrapper,
   ProductsListHeader,
   DropDownBlock,
   DropDown,
-  ProductsList
+  ProductsList,
+  Button
 } from "./styledComponent";
 import { observer } from "mobx-react";
+import * as Cookies from "js-cookie";
 
 @observer
 class ProductList extends Component {
@@ -16,11 +19,19 @@ class ProductList extends Component {
     shoppingStore.changeOrderByPrice(e.target.value);
   };
 
+  logOut = () => {
+    Cookies.remove("token");
+    this.props.history.push("/login");
+  };
+
   render() {
     const { shoppingStore } = this.props;
     const { selectedSizeProducts } = shoppingStore;
     return (
       <Wrapper>
+        <Button buttonType="logOut" onClick={this.logOut}>
+          logOut
+        </Button>
         <ProductsListHeader>
           <span>{selectedSizeProducts.length + " " + "Product(s) found"}</span>
           <DropDownBlock>
@@ -46,4 +57,4 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+export default withRouter(ProductList);
