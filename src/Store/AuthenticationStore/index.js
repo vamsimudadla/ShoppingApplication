@@ -1,9 +1,14 @@
 import { observable } from "mobx";
 import * as Cookies from "js-cookie";
+import { action } from "mobx";
 
 class AuthenticationStore {
   @observable isSignedUp = false;
+  @observable statusText;
+  @observable loginStatus = 0;
+  @observable signUpStatus = 0;
 
+  @action.bound
   createAccount(userName, password) {
     const newUser = {
       username: userName,
@@ -19,15 +24,20 @@ class AuthenticationStore {
     fetch("https://user-shopping-cart.getsandbox.com/sign_up/v1/", options)
       .then(response => {
         if (!response.ok) {
-          throw new Error(response.status);
+          throw new Error(response.statusText);
         } else return response.json();
       })
-      .then(signUpStatus => {
+      .then(signUpObject => {
+        this.signUpStatus = 0;
         this.isSignedUp = true;
       })
-      .catch(error => console.log("UserName already exists"));
+      .catch(error => {
+        this.statusText = error.statusText;
+        this.signUpStatus = 2;
+      });
   }
 
+  @action.bound
   loginAccount(userName, password, history) {
     const user = {
       username: userName,
@@ -42,16 +52,19 @@ class AuthenticationStore {
     };
     fetch("https://user-shopping-cart.getsandbox.com/login/v1/", options)
       .then(response => {
-        console.log(response);
         if (!response.ok) {
-          throw new Error(response.status);
+          throw Error(response.statusText);
         } else return response.json();
       })
-      .then(loginStatus => {
-        Cookies.set("token", loginStatus.accessToken);
+      .then(loginObject => {
+        this.loginStatus = 0;
+        Cookies.set("token", loginObject.accessToken);
         history.push("/");
       })
-      .catch(error => (this.authenticationStatus = "E"));
+      .catch(error => {
+        this.statusText = error.statusText;
+        this.loginStatus = 2;
+      });
   }
 }
 export default AuthenticationStore;

@@ -7,6 +7,7 @@ import {
   Wrapper1,
   WarningText
 } from "../styledComponent";
+import LoadingButton from "../LoadingButton";
 import InputTextBox from "../InputTextBox";
 import Button from "../Button";
 import { authenticationStore } from "../../instances";
@@ -27,22 +28,30 @@ class SignUp extends Component {
   handleUserName = e => {
     this.userName = e.target.value;
     this.isDetailsFilled = true;
+    authenticationStore.signUpStatus = 0;
   };
 
   handlePassword = e => {
     this.password = e.target.value;
     this.isDetailsFilled = true;
+    authenticationStore.signUpStatus = 0;
   };
 
   createAccount = () => {
+    authenticationStore.signUpStatus = 1;
+
     const userName = this.userName.trim();
     const password = this.password.trim();
     if (userName !== "" && password !== "")
       authenticationStore.createAccount(userName, password);
-    else this.isDetailsFilled = false;
+    else {
+      this.isDetailsFilled = false;
+      authenticationStore.signUpStatus = 0;
+    }
   };
 
   render() {
+    const { signUpStatus, statusText } = authenticationStore;
     return (
       <Container>
         {!authenticationStore.isSignedUp ? (
@@ -57,10 +66,14 @@ class SignUp extends Component {
               placeHolder="password"
               handleChange={this.handlePassword}
             />
-            <Button
-              buttonType="Create Account"
-              handleClick={this.createAccount}
-            />
+            {signUpStatus === 1 ? (
+              <LoadingButton buttonType="Create Account" />
+            ) : (
+              <Button
+                buttonType="Create Account"
+                handleClick={this.createAccount}
+              />
+            )}
             <Wrapper1>
               <LoginLinkText>Already have an account,</LoginLinkText>
               <AuthenticationLink onClick={this.loginPage}>
@@ -75,6 +88,9 @@ class SignUp extends Component {
                 Please fill the details to create account
               </WarningText>
             )}
+            {signUpStatus === 2
+              ? statusText || <WarningText>Username already exists</WarningText>
+              : ""}
           </Wrapper>
         ) : (
           <Wrapper1>
