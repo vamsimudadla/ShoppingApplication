@@ -20,6 +20,8 @@ class FetchData extends Component {
         return <ErrorMsg />;
       case 2:
         return <ShoppingApp shoppingStore={shoppingStore} />;
+      default:
+        return <LoadingMsg />;
     }
   }
 }

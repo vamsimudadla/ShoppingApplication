@@ -49,7 +49,9 @@ class ProductList extends Component {
           {selectedSizeProducts.length === 0 ? (
             <span>No Products Available</span>
           ) : (
-            selectedSizeProducts.map(product => <Product product={product} />)
+            selectedSizeProducts.map(product => (
+              <Product product={product} key={product.id} />
+            ))
           )}
         </ProductsList>
       </Wrapper>

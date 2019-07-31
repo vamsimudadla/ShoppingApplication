@@ -4,7 +4,7 @@ class ErrorMsg extends Component {
   render() {
     return (
       <ErrorMessage>
-        <img src="assets/error-msg.png" />
+        <img src="assets/error-msg.png" alt="error" />
       </ErrorMessage>
     );
   }
