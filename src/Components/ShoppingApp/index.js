@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ProductSizes from "./ProductSizes";
-import ProductList from "./ProductList";
+import ProductsContainer from "./ProductsContainer";
 import { Container } from "./styledComponent";
 import { observer } from "mobx-react";
 import CartIConWithNumber from "./CartIconWithNumber";
@@ -12,7 +12,7 @@ class ShoppingApp extends Component {
     return (
       <Container>
         <ProductSizes shoppingStore={shoppingStore} />
-        <ProductList shoppingStore={shoppingStore} />
+        <ProductsContainer shoppingStore={shoppingStore} />
         <CartIConWithNumber shoppingStore={shoppingStore} />
       </Container>
     );

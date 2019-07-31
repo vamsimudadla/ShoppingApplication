@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import FetchData from "./Components/FetchData";
+import FetchProductsData from "./Components/FetchProductsData";
 import Login from "./Components/LoginPage";
 import SignUp from "./Components/SignUpPage";
 import * as Cookies from "js-cookie";
@@ -26,7 +26,7 @@ function App() {
       <Switch>
         <AuthLoginRoute path="/login" component={Login} />
         <AuthSignUpRoute path="/sign-up" component={SignUp} />
-        <PrivateRoute exact path="/" component={FetchData} />
+        <PrivateRoute exact path="/" component={FetchProductsData} />
       </Switch>
     </div>
   );
