@@ -21,7 +21,7 @@ class AuthenticationStore {
         "Content-Type": "application/json"
       }
     };
-    fetch("https://user-shopping-cart.getsandbox.com/sign_up/v1/", options)
+    fetch("https://products-cart.getsandbox.com/sign_up/v1/", options)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -50,7 +50,7 @@ class AuthenticationStore {
         "Content-Type": "application/json"
       }
     };
-    fetch("https://user-shopping-cart.getsandbox.com/login/v1/", options)
+    fetch("https://products-cart.getsandbox.com/login/v1/", options)
       .then(response => {
         if (!response.ok) {
           throw Error(response.statusText);

@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import FetchProductsData from "./Components/FetchProductsData";
 import Login from "./Components/LoginPage";
 import SignUp from "./Components/SignUpPage";
+import { BrowserRouter as Router } from "react-router-dom";
 import * as Cookies from "js-cookie";
 
 function PrivateRoute({ component: Component }) {
@@ -23,11 +24,13 @@ function AuthSignUpRoute({ component: Component }) {
 function App() {
   return (
     <div>
-      <Switch>
-        <AuthLoginRoute path="/login" component={Login} />
-        <AuthSignUpRoute path="/sign-up" component={SignUp} />
-        <PrivateRoute exact path="/" component={FetchProductsData} />
-      </Switch>
+      <Router>
+        <Switch>
+          <AuthLoginRoute path="/login" component={Login} />
+          <AuthSignUpRoute path="/sign-up" component={SignUp} />
+          <PrivateRoute exact path="/" component={FetchProductsData} />
+        </Switch>
+      </Router>
     </div>
   );
 }

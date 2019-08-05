@@ -7,7 +7,7 @@ import CartIcon from "./CartIconwithNumberImage/CartIcon";
 import SubTotalWithCheckOut from "./SubTotalWithCheckOut";
 import CartItemsList from "./CartItemsList";
 @observer
-class CartIConWithNumber extends Component {
+class Cart extends Component {
   @observable isClicked = false;
 
   openCartItemsCard = () => {
@@ -44,4 +44,4 @@ class CartIConWithNumber extends Component {
   }
 }
 
-export default CartIConWithNumber;
+export default Cart;

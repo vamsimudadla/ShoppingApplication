@@ -3,7 +3,7 @@ import ProductSizes from "./ProductSizes";
 import ProductsContainer from "./ProductsContainer";
 import { Container } from "./styledComponent";
 import { observer } from "mobx-react";
-import CartIConWithNumber from "./CartIconWithNumber";
+import Cart from "./Cart";
 
 @observer
 class ShoppingApp extends Component {
@@ -13,7 +13,7 @@ class ShoppingApp extends Component {
       <Container>
         <ProductSizes shoppingStore={shoppingStore} />
         <ProductsContainer shoppingStore={shoppingStore} />
-        <CartIConWithNumber shoppingStore={shoppingStore} />
+        <Cart shoppingStore={shoppingStore} />
       </Container>
     );
   }
