@@ -9,8 +9,9 @@ import {
 } from "./styledComponent";
 class Product extends Component {
   addItemToCart = e => {
-    const { product } = this.props;
+    const { product, shoppingStore } = this.props;
     product.addItemToCart();
+    shoppingStore.updateLocalStorageProducts();
   };
 
   render() {

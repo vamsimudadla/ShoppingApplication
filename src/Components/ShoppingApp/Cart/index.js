@@ -32,7 +32,10 @@ class Cart extends Component {
             />
             <CartName>Cart</CartName>
           </CartImage>
-          <CartItemsList cartProducts={cartProducts} />
+          <CartItemsList
+            cartProducts={cartProducts}
+            shoppingStore={shoppingStore}
+          />
           {cartProducts.length > 0 ? (
             <SubTotalWithCheckOut shoppingStore={shoppingStore} />
           ) : (

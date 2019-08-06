@@ -1,15 +1,31 @@
 import Product from "../model/Product";
 import { observable, computed } from "mobx";
 import { action } from "mobx";
+import products from "../../constants/Products";
 class ShoppingStore {
   @observable products = [];
   @observable selectedSizes = [];
   @observable orderByPrice = "";
-  @observable fetchStatus = 0;
+  @observable fetchStatus = 2;
+  cartItems = JSON.parse(localStorage.getItem("products")) || [];
 
   @action.bound
   addFetchedProducts(products) {
     this.products = products.map(product => (product = new Product(product)));
+    this.updateProductsWithCartItems();
+  }
+
+  @action.bound
+  updateProductsWithCartItems() {
+    if (this.cartItems.length !== 0) {
+      this.cartItems.forEach(cartItem => {
+        this.products.forEach(product => {
+          if (cartItem.id === product.id) {
+            product.quantity = cartItem.quantity;
+          }
+        });
+      });
+    }
   }
 
   @action.bound
@@ -48,6 +64,18 @@ class ShoppingStore {
         availableProducts = availableProducts.concat(selectedSizeProducts[i]);
       return this.sortProductsOrderByPrice(availableProducts);
     }
+  }
+
+  updateLocalStorageProducts() {
+    const products = this.products.filter(product => product.quantity > 0);
+    this.cartItems = products.map(product => {
+      const cartItem = {
+        id: product.id,
+        quantity: product.quantity
+      };
+      return cartItem;
+    });
+    localStorage.setItem("products", JSON.stringify(this.cartItems));
   }
 
   @computed get cartProducts() {
@@ -93,17 +121,18 @@ class ShoppingStore {
 
   @action.bound
   fetchData() {
-    fetch("https://demo8129378.mockable.io/products/all/v1")
-      .then(products => {
-        if (!products.ok) {
-          throw new Error(products.status);
-        } else return products.json();
-      })
-      .then(products => {
-        this.fetchStatus = 2;
-        this.addFetchedProducts(products.products);
-      })
-      .catch(err => (this.fetchStatus = 1));
+    // fetch("https://demo8129378.mockable.io/products/all/v1")
+    //   .then(products => {
+    //     if (!products.ok) {
+    //       throw new Error(products.status);
+    //     } else return products.json();
+    //   })
+    //   .then(products => {
+    //     this.fetchStatus = 2;
+    //     this.addFetchedProducts(products.products);
+    //   })
+    //   .catch(err => (this.fetchStatus = 1));
+    this.addFetchedProducts(products);
   }
 }
 

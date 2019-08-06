@@ -30,7 +30,10 @@ class ProductsContainer extends Component {
           selectedSizeProducts={selectedSizeProducts}
           handleChange={this.handleChange}
         />
-        <ProductsList selectedSizeProducts={selectedSizeProducts} />
+        <ProductsList
+          selectedSizeProducts={selectedSizeProducts}
+          shoppingStore={shoppingStore}
+        />
       </Wrapper>
     );
   }

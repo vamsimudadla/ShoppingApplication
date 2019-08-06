@@ -23,6 +23,12 @@ class CartItem extends Component {
     this.iSMouseHovered = !this.iSMouseHovered;
   };
 
+  deleteCartItem = () => {
+    const { product, shoppingStore } = this.props;
+    product.deleteCartItem();
+    shoppingStore.updateLocalStorageProducts();
+  };
+
   render() {
     const { product } = this.props;
     const {
@@ -43,7 +49,7 @@ class CartItem extends Component {
               {title}
             </ProductTitle>
             <CartCrossIcon
-              onClick={deleteCartItem}
+              onClick={this.deleteCartItem}
               onMouseOver={this.handleChange}
               onMouseLeave={this.handleChange}
             >
